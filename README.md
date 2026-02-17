@@ -1,6 +1,15 @@
 # Decision Schema
 
-**Decision Schema** is the Single Source of Truth (SSOT) for contracts in the multi-core decision ecosystem. It provides shared types and contracts that all decision cores depend on.
+Decision Schema is the **Single Source of Truth (SSOT)** contract for a **domain-agnostic, multi-core decision ecosystem**. It defines the shared language used by independent decision cores: *proposal generation*, *decision modulation/guards*, *ops safety*, and *evaluation/calibration*.
+
+## What this is (domain-agnostic)
+
+This contract is intentionally free of domain vocabulary. It is suitable for any autonomous or AI-assisted decision system, e.g.:
+- **Robotics and safety controllers**: Navigation, manipulation, and safety decisions
+- **Healthcare triage and escalation workflows**: Patient prioritization and care decisions
+- **Content moderation and human-in-the-loop review**: Content flagging and review decisions
+- **Autonomous ops automation**: Incident response, remediation, and infrastructure decisions
+- **Scheduling/education policy engines**: Resource allocation and policy decisions
 
 ## Purpose
 
@@ -38,7 +47,7 @@ from decision_schema.types import Proposal, Action
 proposal = Proposal(
     action=Action.ACT,
     confidence=0.8,
-    reasons=["signal", "imbalance"],
+    reasons=["anomaly_signal", "constraint_violation"],
     params={"value": 100},
 )
 ```
@@ -63,13 +72,14 @@ dependencies = ["decision-schema>=0.1,<0.2"]
 
 This ensures compatibility with `0.1.x` versions but prevents upgrades to `0.2.0+` (which may include deprecations).
 
-## Ecosystem
+## Ecosystem integration
 
 Decision Schema is used by:
-- **mdm-engine**: Produces `Proposal`
-- **decision-modulation-core**: Consumes `Proposal`, produces `FinalDecision`
-- **evaluation-calibration-core**: Reads `PacketV2` traces
-- **ops-health-core**: Integrates with `PacketV2` for operational signals
+
+- **mdm-engine**: produces `Proposal`
+- **decision-modulation-core**: consumes `Proposal`, produces `FinalDecision`
+- **evaluation-calibration-core**: reads `PacketV2` traces
+- **ops-health-core**: produces operational safety signals, integrates via `PacketV2`
 
 See `ECOSYSTEM_CONTRACT_MATRIX.md` for version compatibility details.
 
