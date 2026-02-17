@@ -58,8 +58,8 @@ proposal = Proposal(
 from decision_schema.compat import is_compatible, get_current_version
 
 version = get_current_version()
-if is_compatible(version, expected_major=0, min_minor=1, max_minor=1):
-    print("Schema version is compatible")
+if is_compatible(version, expected_major=0, min_minor=2, max_minor=2):
+    print("Schema version is compatible (0.2.x)")
 ```
 
 ## Version Pinning
@@ -67,10 +67,10 @@ if is_compatible(version, expected_major=0, min_minor=1, max_minor=1):
 Pin schema version in your `pyproject.toml`:
 
 ```toml
-dependencies = ["decision-schema>=0.1,<0.2"]
+dependencies = ["decision-schema>=0.2,<0.3"]
 ```
 
-This ensures compatibility with `0.1.x` versions but prevents upgrades to `0.2.0+` (which may include deprecations).
+This ensures compatibility with `0.2.x` (current minor). Next minor (0.3.x) may introduce deprecations; see `docs/DEPRECATION_PLAN.md`.
 
 ## Ecosystem integration
 

@@ -11,15 +11,24 @@ Cores MUST NOT introduce undocumented keys in public integrations.
 
 **Note**: Domain-specific parameters should be documented in domain adapters, not in core contract.
 
-## Integration context dictionary
+## Integration context dictionary (context key registry)
 
-Cores pass a context dict (e.g. to `modulate(proposal, policy, context)`). PacketV2 does not have a `context` field; it has `input`, `external`, `mdm`, `final_action`. The following keys are conventional for integration:
+Cores pass a context dict (e.g. to `modulate(proposal, policy, context)`). PacketV2 does not have a `context` field; it has `input`, `external`, `mdm`, `final_action`. The following **generic** keys are the SSOT registry for integration:
 
 | Key | Type | Meaning | Producer | Consumer |
 |---|---:|---|---|---|
+| now_ms | int | Current timestamp (ms) | caller | DMC, guards |
+| last_event_ts_ms | int | Last event timestamp (ms); staleness checks | caller | DMC |
 | run_id | string | Correlates packets across components | any core | evaluation |
 | fail_closed | bool | Indicates fail-closed path was taken | any core | ops/eval |
-| now_ms | int | Current timestamp (ms) | caller | DMC, guards |
+| ops_deny_actions | bool | Ops-health: deny all actions | ops-health | DMC |
+| ops_state | string | Ops-health state (GREEN/YELLOW/RED) | ops-health | DMC |
+| ops_cooldown_until_ms | int \| None | Ops-health cooldown end (ms) | ops-health | DMC |
+| errors_in_window | int | Error count in window | caller | DMC |
+| steps_in_window | int | Step count in window | caller | DMC |
+| rate_limit_events | int | Rate-limit event count | caller | DMC |
+| recent_failures | int | Recent failure count (circuit breaker) | caller | DMC |
+| cooldown_until_ms | int \| None | Generic cooldown end (ms) | caller | DMC |
 
 ## PacketV2 fields
 
