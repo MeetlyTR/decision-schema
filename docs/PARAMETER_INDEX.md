@@ -11,12 +11,15 @@ Cores MUST NOT introduce undocumented keys in public integrations.
 
 **Note**: Domain-specific parameters should be documented in domain adapters, not in core contract.
 
-## PacketV2.context
+## Integration context dictionary
+
+Cores pass a context dict (e.g. to `modulate(proposal, policy, context)`). PacketV2 does not have a `context` field; it has `input`, `external`, `mdm`, `final_action`. The following keys are conventional for integration:
 
 | Key | Type | Meaning | Producer | Consumer |
 |---|---:|---|---|---|
 | run_id | string | Correlates packets across components | any core | evaluation |
 | fail_closed | bool | Indicates fail-closed path was taken | any core | ops/eval |
+| now_ms | int | Current timestamp (ms) | caller | DMC, guards |
 
 ## PacketV2 fields
 
@@ -47,6 +50,6 @@ Cores MUST NOT introduce undocumented keys in public integrations.
 - `metadata`: Domain-specific metadata
 
 ### Domain-specific keys
-- Use namespaced keys: `domain:key` (e.g., `robotics:position`)
+- Use namespaced keys: `domain:key` (e.g., `robotics:state`)
 - Document in domain adapter
 - Keep core logic domain-agnostic

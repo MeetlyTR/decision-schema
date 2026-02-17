@@ -6,11 +6,11 @@ This document tracks contract version compatibility across all cores in the deci
 
 | Core | Dependency Range | expected_major | min_minor | max_minor | CI/Test Location |
 |------|------------------|----------------|-----------|-----------|------------------|
-| **decision-schema** | N/A | 0 | 1 | 1 | `tests/test_semver_compat.py` |
-| **mdm-engine** | `>=0.1,<0.2` | 0 | 1 | 1 | `tests/test_schema_dependency.py` |
-| **decision-modulation-core** | `>=0.1,<0.2` | 0 | 1 | 1 | `tests/test_schema_dependency.py` |
-| **evaluation-calibration-core** | `>=0.1,<0.2` | 0 | 1 | 1 | `tests/test_contract_compat.py` |
-| **ops-health-core** | `>=0.1,<0.2` | 0 | 1 | 1 | `tests/test_contract_compat.py` |
+| **decision-schema** | N/A | 0 | 2 | 2 | `tests/test_semver_compat.py` |
+| **mdm-engine** | `>=0.2,<0.3` | 0 | 2 | 2 | `tests/test_schema_dependency.py` |
+| **decision-modulation-core** | `>=0.2,<0.3` | 0 | 2 | 2 | `tests/test_schema_dependency.py` |
+| **evaluation-calibration-core** | `>=0.2,<0.3` | 0 | 2 | 2 | `tests/test_contract_compat.py` |
+| **ops-health-core** | `>=0.2,<0.3` | 0 | 2 | 2 | `tests/test_contract_compat.py` |
 
 ## How to Update This Matrix
 
@@ -42,9 +42,9 @@ RuntimeError: decision-schema version 0.2.0 is incompatible. Expected 0.1.x
 
 ## Current Status
 
-- **Schema Version**: `0.1.0`
-- **All Cores**: Compatible with `0.1.x` range
-- **Next Minor**: `0.2.0` (will enable deprecation warnings for aliases)
+- **Schema Version**: `0.2.0`
+- **Contract**: Domain-agnostic (legacy aliases/fields removed)
+- **All Cores**: Should pin `>=0.2,<0.3` and use min_minor=2, max_minor=2
 
 ## Verification
 

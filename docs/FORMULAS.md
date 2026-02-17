@@ -36,17 +36,12 @@ If `confidence < 0.0` or `confidence > 1.0` → raise `ValueError`.
 
 ### Action Enum Values
 
-Valid actions:
+Valid actions (schema 0.2.0+):
 - `HOLD`: No action
 - `ACT`: Generic action
 - `EXIT`: Generic exit
 - `CANCEL`: Generic cancel
 - `STOP`: Emergency stop
-
-Legacy aliases (deprecated):
-- `QUOTE` → `ACT`
-- `FLATTEN` → `EXIT`
-- `CANCEL_ALL` → `CANCEL`
 
 ## Packet Versioning
 

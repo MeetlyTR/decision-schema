@@ -36,14 +36,14 @@
 
 **Outputs**: Type definitions and contracts used by all cores:
 - `Proposal` → consumed by DMC
-- `FinalDecision` → consumed by execution hosts
+- `FinalDecision` → consumed by executor or downstream systems
 - `PacketV2` → consumed by evaluation-core
 - `Action` enum → used by all cores
 
 ## Non-Goals
 
-- **Domain-specific logic**: Schema is domain-agnostic (no trading/exchange-specific terms)
-- **Runtime execution**: Schema does not execute decisions
+- **Domain-specific logic**: Schema is domain-agnostic (no domain vocabulary in types)
+- **Runtime behavior**: Schema does not execute decisions
 - **Policy enforcement**: Schema does not enforce risk policies
 - **Metrics computation**: Schema does not compute metrics
 

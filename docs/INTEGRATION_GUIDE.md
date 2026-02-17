@@ -21,7 +21,7 @@ from decision_schema.packet_v2 import PacketV2
 from decision_schema.version import __version__
 ```
 
-### Creating a Proposal
+### Creating a Proposal (domain-agnostic)
 
 ```python
 from decision_schema.types import Proposal, Action
@@ -29,13 +29,13 @@ from decision_schema.types import Proposal, Action
 proposal = Proposal(
     action=Action.ACT,
     confidence=0.8,
-    reasons=["signal", "imbalance"],
+    reasons=["anomaly_signal", "constraint_violation"],
     params={
-        "value": 100,
-        "threshold": 0.5,
+        "example_domain:constraint_id": "C-17",
     },
 )
 ```
+Domain-specific keys MUST be namespaced (e.g. `example_domain:key`). See `docs/PARAMETER_INDEX.md`.
 
 ### Creating a FinalDecision
 
@@ -56,7 +56,7 @@ decision = FinalDecision(
 from decision_schema.compat import is_compatible, get_current_version
 
 version = get_current_version()
-if is_compatible(version, expected_major=0, min_minor=1, max_minor=1):
+if is_compatible(version, expected_major=0, min_minor=2, max_minor=2):
     print("Schema version is compatible")
 ```
 
@@ -96,24 +96,7 @@ packet = PacketV2.from_dict(json.loads(line))
 Pin schema version in your `pyproject.toml`:
 
 ```toml
-dependencies = ["decision-schema>=0.1,<0.2"]
+dependencies = ["decision-schema>=0.2,<0.3"]
 ```
 
-This ensures compatibility with `0.1.x` versions but prevents upgrades to `0.2.0+` (which may include deprecations).
-
-## Migration from Legacy Types
-
-If migrating from deprecated aliases:
-
-```python
-# Old (deprecated)
-proposal = Proposal(action=Action.QUOTE, bid_quote=0.49, ...)
-
-# New
-proposal = Proposal(
-    action=Action.ACT,
-    params={"bid": 0.49, "ask": 0.51, "size": 1.0},
-)
-```
-
-See `docs/DEPRECATION_PLAN.md` for detailed migration guide.
+Schema 0.2.0+ is contract-pure (no domain vocabulary). Legacy migration examples live under `docs/examples/` only.

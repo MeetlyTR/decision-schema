@@ -7,24 +7,17 @@ domain-specific terminology (trading, market, order, bid, ask, exchange, etc.).
 import re
 from pathlib import Path
 
-# Domain-specific terms that must not appear in public surface
+# Hard terms: domain-specific (fail if found in public surface)
+# Soft terms (execution, position, order) not included to allow generic use
 FORBIDDEN_TERMS = {
-    "trade",
-    "trading",
-    "trader",
-    "market",
-    "marketplace",
-    "order",
-    "bid",
-    "ask",
+    "trade", "trading", "trader",
+    "market", "marketplace",
+    "orderbook", "order-book",
+    "bid", "ask", "quote", "fill",
     "exchange",
-    "orderbook",
-    "order-book",
-    "quote",
-    "fill",
-    "execution",
-    "position",
     "portfolio",
+    "pnl", "slippage", "microstructure", "requote", "post-only",
+    "drawdown", "take_profit", "stop_loss",
 }
 
 # Files/directories to check
@@ -34,9 +27,10 @@ PUBLIC_SURFACE_PATHS = [
     "decision_schema/",
 ]
 
-# Files/directories to exclude (examples, tests with domain-specific content)
+# Files/directories to exclude (examples, deprecation doc that names removed terms)
 EXCLUDE_PATTERNS = [
-    r"docs/examples/",
+    r"docs[/\\]examples[/\\]",  # quarantine: domain examples
+    r"docs[/\\]DEPRECATION_PLAN\.md",  # describes removed legacy terms
     r"tests/.*example.*",
     r".*_example\.py",
     r".*test.*domain.*",
@@ -59,8 +53,10 @@ def find_files_to_check(repo_root: Path) -> list[Path]:
                 if file_path.is_file() and file_path.suffix in (".md", ".py", ".rst", ".txt"):
                     # Check if file should be excluded
                     rel_path = file_path.relative_to(repo_root)
+                    # Normalize path for cross-platform match
+                    rel_str = str(rel_path).replace("\\", "/")
                     should_exclude = any(
-                        re.search(pattern, str(rel_path), re.IGNORECASE)
+                        re.search(pattern, rel_str, re.IGNORECASE)
                         for pattern in EXCLUDE_PATTERNS
                     )
                     if not should_exclude:
