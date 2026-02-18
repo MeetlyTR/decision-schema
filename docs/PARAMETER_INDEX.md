@@ -40,6 +40,13 @@ Cores pass a context dict (e.g. to `modulate(proposal, policy, context)`). Packe
 | external | dict | External context (redacted) | yes |
 | mdm | dict | Proposal snapshot | yes |
 | final_action | dict | Final decision snapshot | yes |
+
+### PacketV2.external (trace extension)
+
+- Keys MUST be namespaced and match: `^[a-z0-9_]+(\.[a-z0-9_]+)+$` (INV-T1.1)
+- Reserved namespaces (e.g., `harness`, `ops`, `dmc`, `mdm`, `eval`, `integration`, `adapter`) SHOULD be registered in the SSOT registry:
+  - `decision_schema/trace_registry.py` (`EXTERNAL_KEY_REGISTRY`)
+  - See: `docs/TRACE_KEY_REGISTRY.md`
 | latency_ms | int | Total latency in milliseconds | yes |
 | mismatch | dict\|None | Mismatch info if guards triggered | no |
 | schema_version | string | Schema version for compatibility | yes |
