@@ -52,7 +52,7 @@ Cores must pin `>=0.2,<0.3` and use min_minor=2, max_minor=2 for 0.2.x.
 ## Deprecation Timeline
 
 - **0.1.x**: No longer supported. Cores using 0.1.x should upgrade to 0.2.x.
-- **0.2.x**: Supported. Next minor (e.g. 0.3.0) may add optional fields; existing fields remain stable within 0.x.
+- **0.2.x:** Supported. Patch releases (0.2.1, 0.2.2, …) must remain backward-compatible. Any minor bump (0.3.0) requires explicit matrix + pins + expected_minor update.
 - **Major 1.0**: When released, 0.x will enter deprecation window (e.g. 6 months) before EOL; migration guide will be published.
 
 ## Current Status
