@@ -16,7 +16,9 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     strategy:
+      fail-fast: false
       matrix:
         python-version: ["3.11", "3.12"]
 
@@ -31,7 +33,7 @@ jobs:
           cache: pip
 
       - name: Install test tooling
-        run: pip install -U pip pytest build
+        run: pip install -U pip pytest build || (sleep 15 && pip install -U pip pytest build)
 
       - name: Install package
         run: pip install -e .
