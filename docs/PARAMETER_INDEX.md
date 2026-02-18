@@ -41,12 +41,21 @@ Cores pass a context dict (e.g. to `modulate(proposal, policy, context)`). Packe
 | mdm | dict | Proposal snapshot | yes |
 | final_action | dict | Final decision snapshot | yes |
 
-### PacketV2.external (trace extension)
+### PacketV2.external (context snapshot + trace extension)
 
-- Keys MUST be namespaced and match: `^[a-z0-9_]+(\.[a-z0-9_]+)+$` (INV-T1.1)
-- Reserved namespaces (e.g., `harness`, `ops`, `dmc`, `mdm`, `eval`, `integration`, `adapter`) SHOULD be registered in the SSOT registry:
-  - `decision_schema/trace_registry.py` (`EXTERNAL_KEY_REGISTRY`)
-  - See: `docs/TRACE_KEY_REGISTRY.md`
+`PacketV2.external` contains two types of keys:
+
+1. **Context keys** (PARAMETER_INDEX): Plain format `^[a-z0-9_]+$` (e.g., `now_ms`, `run_id`, `ops_deny_actions`)
+   - These are integration context keys documented in PARAMETER_INDEX above
+   - Used by cores for decision-making (DMC, guards, etc.)
+
+2. **Trace-extension keys** (INV-T1): Dot-separated format `^[a-z0-9_]+(\.[a-z0-9_]+)+$` (e.g., `harness.fail_closed`)
+   - Reserved namespaces (e.g., `harness`, `ops`, `dmc`, `mdm`, `eval`, `integration`, `adapter`) SHOULD be registered in the SSOT registry:
+     - `decision_schema/trace_registry.py` (`EXTERNAL_KEY_REGISTRY`)
+     - See: `docs/TRACE_KEY_REGISTRY.md`
+   - Used for trace-level metadata and debugging markers
+
+Validation: Use `decision_schema.trace_registry.validate_external_dict(external, mode="both")` to validate both types.
 | latency_ms | int | Total latency in milliseconds | yes |
 | mismatch | dict\|None | Mismatch info if guards triggered | no |
 | schema_version | string | Schema version for compatibility | yes |
