@@ -25,7 +25,7 @@ Examples:
 
 The following namespaces are reserved by the ecosystem:
 
-- `harness`, `integration`, `ops`, `dmc`, `mdm`, `eval`, `adapter`
+- `harness`, `integration`, `ops`, `dmc`, `mdm`, `eval`, `adapter`, `exec`
 
 Using a reserved namespace implies the key should be **registered** (INV-T1.2 in strict mode).
 
@@ -36,6 +36,13 @@ Registered keys (source of truth: `decision_schema/trace_registry.py`):
 | Key | Owner | Introduced | Description |
 |-----|-------|------------|-------------|
 | `harness.fail_closed` | integration-harness | 0.2.0 | Harness-level fail-closed marker when an exception is caught. |
+| `exec.total_latency_ms` | execution-orchestration-core | 0.2.2 | Total execution latency in milliseconds for the decision execution pipeline. |
+| `exec.success_count` | execution-orchestration-core | 0.2.2 | Number of successful execution attempts. |
+| `exec.failed_count` | execution-orchestration-core | 0.2.2 | Number of failed execution attempts. |
+| `exec.skipped_count` | execution-orchestration-core | 0.2.2 | Number of skipped actions (not executed). |
+| `exec.denied_count` | execution-orchestration-core | 0.2.2 | Number of denied actions due to policies or kill-switch. |
+| `exec.fail_closed` | execution-orchestration-core | 0.2.2 | Fail-closed marker for execution orchestrator when an exception path is taken. |
+| `exec.attempt_count` | execution-orchestration-core | 0.2.2 | Total number of execution attempts across all actions. |
 
 ## How to add a new key
 

@@ -26,6 +26,7 @@ RESERVED_NAMESPACES = frozenset(
         "mdm",
         "eval",
         "adapter",
+        "exec",
     }
 )
 
@@ -36,6 +37,42 @@ EXTERNAL_KEY_REGISTRY: dict[str, dict[str, str]] = {
         "owner": "integration-harness",
         "introduced_in": "0.2.0",
         "description": "Harness-level fail-closed marker set when run_one_step catches an exception.",
+    },
+    # Execution-orchestration-core trace keys (exec.* namespace)
+    "exec.total_latency_ms": {
+        "owner": "execution-orchestration-core",
+        "introduced_in": "0.2.2",
+        "description": "Total execution latency in milliseconds for the decision execution pipeline.",
+    },
+    "exec.success_count": {
+        "owner": "execution-orchestration-core",
+        "introduced_in": "0.2.2",
+        "description": "Number of successful execution attempts.",
+    },
+    "exec.failed_count": {
+        "owner": "execution-orchestration-core",
+        "introduced_in": "0.2.2",
+        "description": "Number of failed execution attempts.",
+    },
+    "exec.skipped_count": {
+        "owner": "execution-orchestration-core",
+        "introduced_in": "0.2.2",
+        "description": "Number of skipped actions (not executed).",
+    },
+    "exec.denied_count": {
+        "owner": "execution-orchestration-core",
+        "introduced_in": "0.2.2",
+        "description": "Number of denied actions due to policies or kill-switch.",
+    },
+    "exec.fail_closed": {
+        "owner": "execution-orchestration-core",
+        "introduced_in": "0.2.2",
+        "description": "Fail-closed marker for execution orchestrator when an exception path is taken.",
+    },
+    "exec.attempt_count": {
+        "owner": "execution-orchestration-core",
+        "introduced_in": "0.2.2",
+        "description": "Total number of execution attempts across all actions.",
     },
 }
 

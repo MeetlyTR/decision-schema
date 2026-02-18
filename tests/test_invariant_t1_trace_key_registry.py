@@ -61,6 +61,14 @@ def test_inv_t1_is_valid_external_key() -> None:
 def test_inv_t1_registry_is_well_formed_and_namespaced() -> None:
     """Registry keys match format and use reserved namespaces."""
     assert "harness.fail_closed" in EXTERNAL_KEY_REGISTRY
+    # Execution-orchestration-core trace keys should also be registered.
+    assert "exec.total_latency_ms" in EXTERNAL_KEY_REGISTRY
+    assert "exec.success_count" in EXTERNAL_KEY_REGISTRY
+    assert "exec.failed_count" in EXTERNAL_KEY_REGISTRY
+    assert "exec.skipped_count" in EXTERNAL_KEY_REGISTRY
+    assert "exec.denied_count" in EXTERNAL_KEY_REGISTRY
+    assert "exec.fail_closed" in EXTERNAL_KEY_REGISTRY
+    assert "exec.attempt_count" in EXTERNAL_KEY_REGISTRY
 
     for k, meta in EXTERNAL_KEY_REGISTRY.items():
         assert TRACE_KEY_RE.match(k), f"registry key must match TRACE_KEY_RE: {k}"
