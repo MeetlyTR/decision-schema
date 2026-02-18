@@ -1,3 +1,8 @@
+<!--
+Decision Ecosystem — decision-schema
+Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+SPDX-License-Identifier: MIT
+-->
 # Decision Schema
 
 Decision Schema is the **Single Source of Truth (SSOT)** contract for a **domain-agnostic, multi-core decision ecosystem**. It defines the shared language used by independent decision cores: *proposal generation*, *decision modulation/guards*, *ops safety*, and *evaluation/calibration*.

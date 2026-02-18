@@ -1,3 +1,8 @@
+<!--
+Decision Ecosystem — decision-schema
+Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+SPDX-License-Identifier: MIT
+-->
 # Release Notes — decision-schema 0.2.2
 
 **Release Date:** 2026-02-18  

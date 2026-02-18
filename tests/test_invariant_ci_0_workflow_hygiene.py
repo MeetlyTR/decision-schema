@@ -1,3 +1,6 @@
+# Decision Ecosystem — decision-schema
+# Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+# SPDX-License-Identifier: MIT
 """CI-0: Workflow file hygiene — LF-only, no control/embedding Unicode, multi-line YAML."""
 import re
 from pathlib import Path

@@ -1,3 +1,6 @@
+# Decision Ecosystem — decision-schema
+# Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+# SPDX-License-Identifier: MIT
 """Schema compatibility utilities."""
 
 from decision_schema.version import __version__

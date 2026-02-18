@@ -1,3 +1,6 @@
+# Decision Ecosystem — decision-schema
+# Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+# SPDX-License-Identifier: MIT
 """Trace external key registry and validation (INV-T1).
 
 SSOT for PacketV2.external key naming and registration rules.

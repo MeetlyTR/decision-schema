@@ -1,3 +1,6 @@
+# Decision Ecosystem — decision-schema
+# Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+# SPDX-License-Identifier: MIT
 """Compat gate: current schema is 0.2.x; is_compatible(min_minor=2, max_minor=2) passes."""
 
 from decision_schema.compat import get_current_version, is_compatible, parse_version

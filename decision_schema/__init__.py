@@ -1,3 +1,6 @@
+# Decision Ecosystem — decision-schema
+# Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+# SPDX-License-Identifier: MIT
 """Decision Schema: Shared contract for multi-core decision ecosystem."""
 
 from decision_schema.types import Action, Proposal, FinalDecision, MismatchInfo

@@ -1,3 +1,6 @@
+# Decision Ecosystem — decision-schema
+# Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+# SPDX-License-Identifier: MIT
 """Test INVARIANT 0: Domain-agnosticism in public surface.
 
 This test ensures that public documentation and schema sources do not contain

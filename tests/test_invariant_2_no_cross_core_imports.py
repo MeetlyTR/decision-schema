@@ -1,3 +1,6 @@
+# Decision Ecosystem — decision-schema
+# Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+# SPDX-License-Identifier: MIT
 # INV2: This package must not import other ecosystem cores (schema is SSOT).
 import ast
 from pathlib import Path

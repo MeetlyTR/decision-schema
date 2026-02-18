@@ -1,3 +1,6 @@
+# Decision Ecosystem — decision-schema
+# Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+# SPDX-License-Identifier: MIT
 """Core types: Action enum, Proposal, FinalDecision, MismatchInfo.
 
 Contract is domain-agnostic. Domain-specific keys MUST use namespaced params

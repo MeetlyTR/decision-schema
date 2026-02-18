@@ -1,3 +1,8 @@
+<!--
+Decision Ecosystem — decision-schema
+Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+SPDX-License-Identifier: MIT
+-->
 # PARAMETER_INDEX (SSOT)
 
 This document is the **Single Source of Truth** for structured keys used across the decision ecosystem.

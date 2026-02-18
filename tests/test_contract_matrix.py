@@ -1,3 +1,6 @@
+# Decision Ecosystem — decision-schema
+# Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+# SPDX-License-Identifier: MIT
 """Test that ECOSYSTEM_CONTRACT_MATRIX.md exists and contains all cores."""
 
 from pathlib import Path

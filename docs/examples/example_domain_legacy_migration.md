@@ -1,3 +1,8 @@
+<!--
+Decision Ecosystem — decision-schema
+Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+SPDX-License-Identifier: MIT
+-->
 # Example Domain Only: Legacy Migration (0.1 → 0.2)
 
 **This document is for illustration only.** It shows how one might map legacy domain-specific fields to the 0.2.0 contract. The contract itself does not prescribe these keys.

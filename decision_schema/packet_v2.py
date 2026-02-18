@@ -1,3 +1,6 @@
+# Decision Ecosystem — decision-schema
+# Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+# SPDX-License-Identifier: MIT
 """PacketV2 dataclass and serialization for end-to-end tracing."""
 
 from dataclasses import asdict, dataclass, field

@@ -1,3 +1,8 @@
+<!--
+Decision Ecosystem — decision-schema
+Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+SPDX-License-Identifier: MIT
+-->
 # Decision Schema Integration Guide
 
 ## Installation
