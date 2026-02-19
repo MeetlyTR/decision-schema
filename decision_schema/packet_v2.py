@@ -13,7 +13,7 @@ from decision_schema.version import __version__
 class PacketV2:
     """
     Single-step packet: input -> external -> mdm -> final_action + latency + mismatch.
-    
+
     Used for end-to-end tracing and audit logging.
     Schema version is included for compatibility checks.
     """
@@ -26,12 +26,14 @@ class PacketV2:
     final_action: dict[str, Any]
     latency_ms: int
     mismatch: dict[str, Any] | None = None
-    schema_version: str = field(default_factory=lambda: __version__)  # Schema version for compatibility
+    schema_version: str = field(
+        default_factory=lambda: __version__
+    )  # Schema version for compatibility
 
     def to_dict(self) -> dict[str, Any]:
         """
         Serialize for JSONL; no secrets (external/input must be pre-redacted).
-        
+
         Returns:
             Dictionary representation suitable for JSON serialization.
         """
@@ -41,10 +43,10 @@ class PacketV2:
     def from_dict(cls, data: dict[str, Any]) -> "PacketV2":
         """
         Deserialize from dictionary.
-        
+
         Args:
             data: Dictionary representation from JSON.
-        
+
         Returns:
             PacketV2 instance.
         """

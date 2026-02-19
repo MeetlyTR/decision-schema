@@ -18,7 +18,7 @@ def test_contract_matrix_contains_all_cores() -> None:
     repo_root = Path(__file__).resolve().parents[1]
     matrix_file = repo_root / "ECOSYSTEM_CONTRACT_MATRIX.md"
     content = matrix_file.read_text(encoding="utf-8")
-    
+
     # Check for all core names
     cores = [
         "decision-schema",
@@ -27,7 +27,7 @@ def test_contract_matrix_contains_all_cores() -> None:
         "evaluation-calibration-core",
         "ops-health-core",
     ]
-    
+
     for core in cores:
         assert core in content, f"ECOSYSTEM_CONTRACT_MATRIX.md must mention {core}"
 

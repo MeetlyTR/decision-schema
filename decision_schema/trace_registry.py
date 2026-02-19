@@ -93,7 +93,7 @@ def is_valid_context_key(key: str) -> bool:
 def is_valid_external_key(key: str, mode: str = "both") -> bool:
     """
     True if key matches required format.
-    
+
     Args:
         key: Key to validate
         mode: "context" (PARAMETER_INDEX keys), "trace" (trace-extension keys), "both" (either)

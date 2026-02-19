@@ -2,18 +2,23 @@
 # Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
 # SPDX-License-Identifier: MIT
 """CI-0: Workflow file hygiene — LF-only, no control/embedding Unicode, multi-line YAML."""
+
 import re
 from pathlib import Path
 
 WORKFLOW_DIR = Path(__file__).resolve().parent.parent / ".github" / "workflows"
 
 FORBIDDEN_UNICODE_CODEPOINT_RANGES = [
-    ("\u202A", "\u202E"),
+    ("\u202a", "\u202e"),
     ("\u2066", "\u2069"),
     ("\u2028", "\u2029"),
 ]
 FORBIDDEN_UNICODE_CHARS = [
-    "\ufeff", "\u200b", "\u200c", "\u200d", "\u2060",
+    "\ufeff",
+    "\u200b",
+    "\u200c",
+    "\u200d",
+    "\u2060",
 ]
 MIN_EXPECTED_NEWLINES = 10
 
@@ -41,7 +46,8 @@ def test_invariant_ci_0_workflow_hygiene():
     for path in workflow_files:
         b = path.read_bytes()
         if b"\r" in b:
-            failures.append(f"{path}: contains CR bytes (count={b.count(b'\r')})")
+            cr_count = b.count(b"\r")
+            failures.append(f"{path}: contains CR bytes (count={cr_count})")
         lf_count = b.count(b"\n")
         if lf_count < MIN_EXPECTED_NEWLINES:
             failures.append(f"{path}: too few LF newlines (count={lf_count})")

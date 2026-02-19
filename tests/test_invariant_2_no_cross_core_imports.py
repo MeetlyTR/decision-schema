@@ -7,7 +7,12 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PACKAGE_NAMES = ["decision_schema"]
-FORBIDDEN_IMPORTS = {"mdm_engine", "decision_modulation_core", "ops_health", "eval_calibration_core"}
+FORBIDDEN_IMPORTS = {
+    "mdm_engine",
+    "decision_modulation_core",
+    "ops_health",
+    "eval_calibration_core",
+}
 
 
 def _collect_imports(path: Path):

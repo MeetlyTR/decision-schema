@@ -26,10 +26,10 @@ def test_is_compatible_minor_range() -> None:
     # Within range
     assert is_compatible("0.1.0", 0, min_minor=1, max_minor=2) is True
     assert is_compatible("0.2.0", 0, min_minor=1, max_minor=2) is True
-    
+
     # Below range
     assert is_compatible("0.0.9", 0, min_minor=1, max_minor=2) is False
-    
+
     # Above range
     assert is_compatible("0.3.0", 0, min_minor=1, max_minor=2) is False
 
@@ -65,10 +65,10 @@ def test_parse_version() -> None:
     assert parse_version("0.1.0") == (0, 1, 0)
     assert parse_version("1.2.3") == (1, 2, 3)
     assert parse_version("0.10.5") == (0, 10, 5)
-    
+
     # Missing patch defaults to 0
     assert parse_version("0.1") == (0, 1, 0)
-    
+
     # Invalid format raises ValueError
     with pytest.raises(ValueError):
         parse_version("invalid")

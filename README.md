@@ -107,3 +107,7 @@ See `docs/RELEASE_PLAN.md` for details.
 ## Migration
 
 If migrating from deprecated aliases or legacy fields, see `docs/DEPRECATION_PLAN.md` and `docs/INTEGRATION_GUIDE.md`.
+
+## License
+
+MIT License. See [LICENSE](LICENSE).

@@ -12,8 +12,6 @@ from decision_schema.trace_registry import (
     EXTERNAL_KEY_REGISTRY,
     validate_external_dict,
     is_valid_external_key,
-    is_valid_context_key,
-    is_valid_trace_key,
     registry_keys,
 )
 

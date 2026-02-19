@@ -14,20 +14,20 @@ def is_compatible(
 ) -> bool:
     """
     Check if schema version is compatible with expected version range.
-    
+
     SemVer compatibility rules:
     - For 0.x versions: compatible if major matches AND minor is within range (if specified)
     - For 1.x+ versions: compatible if major matches (minor/patch changes are backward compatible)
-    
+
     Args:
         schema_version: Schema version string (e.g., "0.1.0")
         expected_major: Expected major version number (e.g., 0)
         min_minor: Minimum minor version (inclusive). If None, no lower bound.
         max_minor: Maximum minor version (inclusive). If None, no upper bound.
-    
+
     Returns:
         True if compatible, False otherwise.
-    
+
     Example:
         >>> is_compatible("0.1.0", 0)
         True
@@ -42,17 +42,17 @@ def is_compatible(
         parts = schema_version.split(".")
         major = int(parts[0])
         minor = int(parts[1]) if len(parts) > 1 else 0
-        
+
         if major != expected_major:
             return False
-        
+
         # For 0.x versions, check minor version range
         if major == 0:
             if min_minor is not None and minor < min_minor:
                 return False
             if max_minor is not None and minor > max_minor:
                 return False
-        
+
         # For 1.x+ versions, minor/patch changes are backward compatible
         return True
     except (ValueError, IndexError):
@@ -68,13 +68,13 @@ def get_current_version() -> str:
 def parse_version(version: str) -> tuple[int, int, int]:
     """
     Parse SemVer string into (major, minor, patch) tuple.
-    
+
     Args:
         version: Version string (e.g., "0.1.0")
-    
+
     Returns:
         Tuple of (major, minor, patch)
-    
+
     Raises:
         ValueError: If version format is invalid
     """
