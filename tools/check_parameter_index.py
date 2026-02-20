@@ -30,7 +30,11 @@ def main() -> int:
             return 1
 
     # Trace registry must be referenced (SSOT link)
-    if "trace_registry" not in text and "EXTERNAL_KEY_REGISTRY" not in text and "TRACE_KEY_REGISTRY" not in text:
+    if (
+        "trace_registry" not in text
+        and "EXTERNAL_KEY_REGISTRY" not in text
+        and "TRACE_KEY_REGISTRY" not in text
+    ):
         print(
             "INV-PARAM-INDEX-1: PARAMETER_INDEX.md should reference trace_registry or TRACE_KEY_REGISTRY",
             file=sys.stderr,
